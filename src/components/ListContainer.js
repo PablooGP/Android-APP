@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image, Pressable, Modal } from "react-native";
 import ItemCounter from "./ItemCounter.js"
+import ModalView from "./Modal.js";
 
 const CartArray = [
 	{
@@ -14,28 +15,28 @@ const CartArray = [
 	{
 		id: 2,
 		image: "https://i.ibb.co/2WX7C73/asdjadu43563md.jpg",
-		name: "Procesador AMD RYZEN 3 3200G 4.0GHz Turno + Radeon Vega 8 AM4 Wraith Stealth Cooler",
+		name: "Este es otro producto [id=2]",
 		description: "En este lugar deberia ir la descripcion del producto...",
 		quantity: 1,
 	},
 	{
 		id: 3,
 		image: "https://i.ibb.co/2WX7C73/asdjadu43563md.jpg",
-		name: "Procesador AMD RYZEN 3 3200G 4.0GHz Turno + Radeon Vega 8 AM4 Wraith Stealth Cooler",
+		name: "Otro producto [id=3]",
 		description: "En este lugar deberia ir la descripcion del producto...",
 		quantity: 2,
 	},
 	{
 		id: 4,
 		image: "https://i.ibb.co/2WX7C73/asdjadu43563md.jpg",
-		name: "Procesador AMD RYZEN 3 3200G 4.0GHz Turno + Radeon Vega 8 AM4 Wraith Stealth Cooler",
+		name: "Tambien otro producto [id=4]",
 		description: "En este lugar deberia ir la descripcion del producto...",
 		quantity: 8,
 	},
 	{
 		id: 5,
 		image: "https://i.ibb.co/2WX7C73/asdjadu43563md.jpg",
-		name: "Procesador AMD RYZEN 3 3200G 4.0GHz Turno + Radeon Vega 8 AM4 Wraith Stealth Cooler",
+		name: "Ultimo producto de la lista [id=5]",
 		description: "En este lugar deberia ir la descripcion del producto...",
 		quantity: 1,
 	}
@@ -111,34 +112,6 @@ const Styles = StyleSheet.create({
 		width: "45%",
 		height: "65%"
 	},
-
-	modal: {
-		position: "absolute",
-		left: 0,
-		top: 0,
-	},
-	modalContainer: {
-		position: "relative",
-		display: "flex",
-		flexDirection: "column",
-		alignContent: "center",
-		alignItems: "center",
-		gap: 2,
-	},
-	modalCancelButton: {
-		position: "relative",
-		display: "flex",
-		backgroundColor: "black",
-		width: "100%",
-		height: 40
-	},
-	modalDeleteButton: {
-		position: "relative",
-		display: "flex",
-		backgroundColor: "red",
-		width: "100%",
-		height: 40
-	},
 	centerText: {
 		textAlign: "center",
 		verticalAlign: "middle",
@@ -173,36 +146,7 @@ const ListContainer = () => {
 		)
 	}
 
-	const ModalView = () => {
-
-		const CancelFunction = () => {
-			setItemSelected({})
-			setModalVisible(false)
-		}
-
-		const DeleteItemFunction = () => {
-			setCartArray(cartArray.filter(e => e.id != itemSelected.id))
-			setItemSelected({})
-			setModalVisible(false)
-		}
-
-		return (
-			<Modal visible={modalVisible} style={[Styles.modal]} animationType="fade" presentationStyle="overFullScreen">
-				<View style={[Styles.modalContainer]}>
-					<Text>{`Estas seguro que quieres borrar el siguiente producto de tu carrito?\n`}</Text>
-					<Text>{`${itemSelected.name}\n\nCantidad: ${itemSelected.quantity}\n`}</Text>
-					<TouchableOpacity onPress={CancelFunction} style={[Styles.modalCancelButton]}>
-						<Text style={[Styles.fullSize, Styles.centerText]}>{"Cancelar"}</Text>
-					</TouchableOpacity>
-					<TouchableOpacity onPress={DeleteItemFunction} style={[Styles.modalDeleteButton]}>
-						<Text style={[Styles.fullSize, Styles.centerText]}>{"Borrar"}</Text>
-					</TouchableOpacity>
-				</View>
-
-
-			</Modal>
-		)
-	}
+	
 
 	return (
 		<SafeAreaView>
@@ -218,7 +162,7 @@ const ListContainer = () => {
 						<Text>{"No hay productos en el carrito!"}</Text>
 					)
 			}
-			<ModalView />
+			<ModalView setModalVisible={setModalVisible} modalVisible={modalVisible} itemSelected={itemSelected} setItemSelected={setItemSelected} cartArray={cartArray} setCartArray={setCartArray} />
 		</SafeAreaView>
 	)
 }
