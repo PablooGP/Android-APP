@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image, Pressable, Modal } from "react-native";
-import ItemCounter from "./ItemCounter.js"
-import ModalView from "./Modal.js";
+import ItemCounter from "../components/ItemCounter.jsx"
+import ModalView from "../components/Modal.jsx"
 
 const CartArray = [
 	{
@@ -77,8 +77,10 @@ const Styles = StyleSheet.create({
 		left: 95,
 		width: "100%",
 		paddingRight: 100,
-		fontSize: 14,
-		backgroundColor: "transparent"
+		fontSize: 12,
+		backgroundColor: "transparent",
+		fontFamily: "NotoSans",
+		fontWeight: 600
 	},
 	shadow: {
 		borderColor: "black",
@@ -120,7 +122,7 @@ const Styles = StyleSheet.create({
 	}
 })
 
-const ListContainer = () => {
+const CartContainer = () => {
 
 	const [cartArray, setCartArray] = useState(CartArray)
 	const [modalVisible, setModalVisible] = useState(false)
@@ -167,4 +169,4 @@ const ListContainer = () => {
 	)
 }
 
-export default ListContainer
+export default CartContainer

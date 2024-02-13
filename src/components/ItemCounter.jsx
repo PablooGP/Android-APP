@@ -31,11 +31,14 @@ const Style = StyleSheet.create({
 		width: w,
 		height: "100%",
 		backgroundColor: "#e6e6e6"
+		
 	},
 	text: {
 		width: "100%",
 		height: "100%",
 		fontSize: 20,
+		fontFamily: "Josefin",
+		fontWeight: 900
 	},
 	textMid: {
 		display: "flex",

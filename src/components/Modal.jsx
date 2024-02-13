@@ -65,8 +65,6 @@ const ModalView = ({itemSelected, modalVisible, setModalVisible, setItemSelected
 					<Text style={[Styles.fullSize, Styles.centerText]}>{"Borrar"}</Text>
 				</TouchableOpacity>
 			</View>
-
-
 		</Modal>
 	)
 }

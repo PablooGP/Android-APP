@@ -16,7 +16,7 @@ const Styles = StyleSheet.create({
 	container: {
 		position: "relative",
 		zIndex: 5,
-		height: 62 + StatusBarHeight,
+		height: 62 + 34 + StatusBarHeight,
 		backgroundColor: StylesConfiguration.MainColor
 	},
 	statusBar: {
@@ -43,7 +43,7 @@ const Styles = StyleSheet.create({
 		zIndex: 2,
 	},
 	topbarSearch: {
-		position: "absolute",
+		position: "relative",
 		width: "65%",
 		left: "17.5%",
 		top: 13,
@@ -56,20 +56,59 @@ const Styles = StyleSheet.create({
 	},
 	searchbarInput: {
 		fontSize: 18
+	},
+	categoryBar: {
+		position: "relative",
+		width: "100%",
+		height: 34,
+		backgroundColor: StylesConfiguration.MainColor,
+		top: 26,
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "center",
+		verticalAlign: "middle",
+		gap: 5
+	},
+	categoryButton: {
+		position: "relative",
+		width: 100,
+		height: "100%",
+		textAlign: "center",
+		alignSelf: "center",
+		display: "flex",
+	},
+	categoryText: {
+		fontSize: 14,
+		textAlign: "center",
+		textAlignVertical: "center",
+		color: "#fafafafa",
+		fontFamily: "NotoSans",
+		fontWeight: 700
 	}
 })
 
-export default function Topbar() {
+export default function Topbar({ setScreenSelected }) {
 	return (
 		<View style={Styles.container}>
 			<View style={Styles.statusBar}></View>
 			<View style={Styles.outsideStatusbar}>
-				<TouchableOpacity title="TEST" style={Styles.topbarButton}></TouchableOpacity>
+				<TouchableOpacity title="TEST" style={Styles.topbarButton} onPress={() => setScreenSelected({screenName: "home"})}/>
 				<View style={Styles.topbarSearch}>
 					<TextInput 
 						style={[Styles.fullSize, Styles.centerTextVertical, Styles.searchbarInput]}
 						placeholder="Search"
 					/>
+				</View>
+				<View style={Styles.categoryBar}>
+					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "home"})}>
+						<Text style={[Styles.fullSize, Styles.categoryText]}>{"Home"}</Text>
+					</TouchableOpacity>
+					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "products"})}>
+						<Text style={[Styles.fullSize, Styles.categoryText]}>{"Products"}</Text>
+					</TouchableOpacity>
+					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "cart"})}>
+						<Text style={[Styles.fullSize, Styles.categoryText]}>{"View Cart"}</Text>
+					</TouchableOpacity>
 				</View>
 			</View>
 
