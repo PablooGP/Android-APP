@@ -170,3 +170,4 @@ const CartContainer = () => {
 }
 
 export default CartContainer
+export const CartStyle = Styles

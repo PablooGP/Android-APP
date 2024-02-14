@@ -1,0 +1,77 @@
+{
+	"Products": [
+		{
+			"id": 1,
+			"image": "https://i.ibb.co/2WX7C73/asdjadu43563md.jpg",
+			"name": "Procesador AMD RYZEN 3 3200G 4.0GHz Turno + Radeon Vega 8 AM4 Wraith Stealth Cooler",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Procesadores"]
+		},
+		{
+			"id": 2,
+			"image": "",
+			"name": "Procesador Intel Pentium G4560 3.5GHz Socket 1151 Kaby Lake OEM Sin Cooler",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Procesadores"]
+		},
+		{
+			"id": 3,
+			"image": "",
+			"name": "Procesador AMD RYZEN 5 3600 4.2GHz Turbo AM4 Wraith Stealth Cooler",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Procesadores"]
+		},
+		{
+			"id": 11,
+			"image": "",
+			"name": "Placa de Video Asrock Radeon RX 550 2GB GDDR5 Phantom Gaming",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Tarjetas Graficas"]
+		},
+		{
+			"id": 12,
+			"image": "",
+			"name": "Placa de Video ASUS GeForce RTX 4080 16GB GDDR6X ROG STRIX OC",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Tarjetas Graficas"]
+		},
+		{
+			"id": 13,
+			"image": "",
+			"name": "Placa de Video ASUS GeForce GTX 1660 SUPER 6GB GDDR6 OC TUF",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Tarjetas Graficas"]
+		},
+
+		{
+			"id": 21,
+			"image": "",
+			"name": "Monitor Gamer Samsung 24'' G50 Curvo 144Hz Full HD VA FreeSync",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Monitores"]
+		},
+		{
+			"id": 22,
+			"image": "",
+			"name": "Monitor LG 34'' UltraWide 34WL85C-B Curvo IPS 2K QHD 21:9",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Monitores"]
+		},
+		{
+			"id": 23,
+			"image": "",
+			"name": "Monitor LG 19'' 19M38A-B VGA",
+			"description": "En este lugar deberia ir la descripcion del producto...",
+			"stock": 999,
+			"Categories": ["Monitores"]
+		}
+	]
+}

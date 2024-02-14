@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions, StatusBar } from 'react-native';
-import StylesConfig from "../StylesConfiguration.js"
+import StylesConfig from "../global/StylesConfiguration.js"
 
 const StatusBarHeight = StatusBar.currentHeight
 

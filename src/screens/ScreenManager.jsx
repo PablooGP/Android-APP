@@ -4,6 +4,7 @@ import { StyleSheet, View, TextInput, Pressable, Text, TouchableOpacity, Hair } 
 import Home from "./Home.jsx"
 import CartContainer from "./Cart.jsx"
 import Products from "./Products.jsx"
+import Category from "./Categories.jsx"
 
 const Style = StyleSheet.create({
 	container: {
@@ -18,8 +19,11 @@ const Screens = {
 	cart: ({ setScreenSelected }) => {
 		return <CartContainer setScreenSelected={setScreenSelected} />
 	},
-	products: ({ setScreenSelected }) => {
-		return <Products setScreenSelected={setScreenSelected} />
+	products: ({ setScreenSelected, data }) => {
+		return <Products setScreenSelected={setScreenSelected} data={data}/>
+	},
+	categories: ({ setScreenSelected }) => {
+		return <Category setScreenSelected={setScreenSelected} />
 	},
 
 }
@@ -30,7 +34,7 @@ const ScreenManager = ({ selected, setScreenSelected }) => {
 		<View style={[Style.container]}>
 			{
 				Screen ?
-					<Screen setScreenSelected={setScreenSelected} /> : null
+					<Screen setScreenSelected={setScreenSelected} data={selected} /> : null
 			}
 		</View>
 	)

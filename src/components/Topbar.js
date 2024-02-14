@@ -1,6 +1,6 @@
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Pressable, Dimensions, TouchableOpacity, TextInput, ScrollView, StatusBar } from 'react-native';
-import StylesConfiguration from '../StylesConfiguration.js';
+import StylesConfiguration from "../global/StylesConfiguration.js"
 
 const StatusBarHeight = StatusBar.currentHeight
 const w = Dimensions.get('window').width // X
@@ -100,8 +100,8 @@ export default function Topbar({ setScreenSelected }) {
 					/>
 				</View>
 				<View style={Styles.categoryBar}>
-					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "home"})}>
-						<Text style={[Styles.fullSize, Styles.categoryText]}>{"Home"}</Text>
+					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "categories"})}>
+						<Text style={[Styles.fullSize, Styles.categoryText]}>{"Categories"}</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "products"})}>
 						<Text style={[Styles.fullSize, Styles.categoryText]}>{"Products"}</Text>
