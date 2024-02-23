@@ -16,12 +16,14 @@ const ProductView = ({ properties }) => {
 	)
 }
 
-const Products = ({ setScreenSelected, data }) => {
+const Products = ({ navigation, route }) => {
+
+	const { Category } = route || {}
 
 	let prods = ProductsList.Products
-	if (data && data.filter) {
+	if (Category != null || Category != undefined) {
 		prods = ProductsList.Products.filter((e => 
-			e.Categories.includes(data.filter)
+			e.Categories.includes(Category)
 		))
 	}
 

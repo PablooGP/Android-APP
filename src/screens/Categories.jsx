@@ -6,12 +6,9 @@ const Style = StyleSheet.create({
 
 })
 
-const Category = ({ setScreenSelected, data}) => {
+const Category = ({ navigation }) => {
 	const renderCategory = (categoryType) => {
-		setScreenSelected({
-			screenName: "products",
-			filter: categoryType
-		})
+		navigation.navigate("Products", {Category: categoryType})
 	}
 
 	return (

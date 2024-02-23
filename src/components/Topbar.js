@@ -87,12 +87,13 @@ const Styles = StyleSheet.create({
 	}
 })
 
-export default function Topbar({ setScreenSelected }) {
+export default function Topbar({ navigation }) {
+	console.log(navigation.navigate)
 	return (
 		<View style={Styles.container}>
 			<View style={Styles.statusBar}></View>
 			<View style={Styles.outsideStatusbar}>
-				<TouchableOpacity title="TEST" style={Styles.topbarButton} onPress={() => setScreenSelected({screenName: "home"})}/>
+				<TouchableOpacity title="TEST" style={Styles.topbarButton} onPress={() => navigation.navigate("Home")}/>
 				<View style={Styles.topbarSearch}>
 					<TextInput 
 						style={[Styles.fullSize, Styles.centerTextVertical, Styles.searchbarInput]}
@@ -100,13 +101,13 @@ export default function Topbar({ setScreenSelected }) {
 					/>
 				</View>
 				<View style={Styles.categoryBar}>
-					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "categories"})}>
+					<TouchableOpacity style={Styles.categoryButton} onPress={() => navigation.navigate("Categories")}>
 						<Text style={[Styles.fullSize, Styles.categoryText]}>{"Categories"}</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "products"})}>
+					<TouchableOpacity style={Styles.categoryButton} onPress={() => navigation.navigate("Products")}>
 						<Text style={[Styles.fullSize, Styles.categoryText]}>{"Products"}</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={Styles.categoryButton} onPress={() => setScreenSelected({screenName: "cart"})}>
+					<TouchableOpacity style={Styles.categoryButton} onPress={() => navigation.navigate("Cart")}>
 						<Text style={[Styles.fullSize, Styles.categoryText]}>{"View Cart"}</Text>
 					</TouchableOpacity>
 				</View>

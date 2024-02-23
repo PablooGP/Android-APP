@@ -122,7 +122,7 @@ const Styles = StyleSheet.create({
 	}
 })
 
-const CartContainer = () => {
+const CartContainer = ({ navigation }) => {
 
 	const [cartArray, setCartArray] = useState(CartArray)
 	const [modalVisible, setModalVisible] = useState(false)
