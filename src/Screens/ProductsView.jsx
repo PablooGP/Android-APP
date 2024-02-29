@@ -35,7 +35,7 @@ const ProductsView = ({ navigation, route }) => {
 				ListFooterComponent={View}
 				ListFooterComponentStyle={Styles.tabBarSpace}
 				ListHeaderComponent={() => <HeaderComponent setKeyword={setKeyword}/>}
-				stickyHeaderIndices={[0]}
+				
 				ItemSeparatorComponent={() => (
 					<View style={Styles.listSeparator} />
 				)}
