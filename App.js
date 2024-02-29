@@ -1,22 +1,17 @@
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar'
 import { useState, useEffect } from 'react'
 import { useFonts } from 'expo-font'
 import { Text, View, SafeAreaView, Pressable, Dimensions, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { Styles, Set } from "./src/styles/index.js"
-import Topbar from "./src/components/Topbar.js"
+import Topbar from "./src/components/Topbar.jsx"
 import Bottombar from "./src/components/Bottombar.js"
 
 import fonts from './src/global/fonts.js';
 
-
 // Import de Screens
 
-import ScreenManager from './src/screens/ScreenManager.jsx'
-import CartContainer from './src/screens/Cart.jsx'
-import Navigator from './src/Navigation/Navigator.js'
-
-const StatusBarHeight = StatusBar.currentHeight
+import TabNavigator from './src/Navigation/TabNavigator.jsx'
 
 export default function App() {
 
@@ -26,6 +21,19 @@ export default function App() {
 	if (!fontsLoaded) return null
 
 	return (
-		<Navigator/>
+		
+
+		<View style={{
+			height: "100%",
+			width: "100%",
+			backgroundColor: "transparent",
+		}}>
+			<Topbar/>
+			<NavigationContainer>
+				<TabNavigator />
+			</NavigationContainer>
+		</View>
+
+
 	);
 }

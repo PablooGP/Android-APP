@@ -3,9 +3,10 @@
 		{
 			"id": 1,
 			"image": "https://i.ibb.co/2WX7C73/asdjadu43563md.jpg",
-			"name": "Procesador AMD RYZEN 3 3200G 4.0GHz Turno + Radeon Vega 8 AM4 Wraith Stealth Cooler",
+			"name": "Procesador AMD RYZEN 3 3200G 4.0GHz Turbo + Radeon Vega 8 AM4 Wraith Stealth Cooler",
 			"description": "En este lugar deberia ir la descripcion del producto...",
 			"stock": 999,
+			"price": 102750,
 			"Categories": ["Procesadores"]
 		},
 		{
