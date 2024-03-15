@@ -8,6 +8,7 @@ import { BlurView } from "expo-blur"
 import ProductsStack from "./ProductsStack.jsx"
 import CategoryStack from "./CategoryStack.jsx"
 import CartStack from "./CartStack.jsx"
+import ProfileStack from "./ProfileStack.jsx"
 
 import Styles from '../styles/Styles.js'
 
@@ -27,8 +28,8 @@ const TabNavigator = () => {
 					borderTopLeftRadius: 20,
 					overflow: "hidden",
 					backgroundColor: "transparent"
-				}}/>)
-				
+				}} />)
+
 			}}
 		>
 			<Tab.Screen
@@ -59,8 +60,20 @@ const TabNavigator = () => {
 				component={CartStack}
 				options={{
 					tabBarIcon: ({ focused }) => (
-						<View style={{zIndex: 5}}>
+						<View style={{ zIndex: 5 }}>
 							<FontAwesome5 name="shopping-cart" size={30} color={focused ? "black" : "grey"} />
+						</View>
+					)
+				}}
+			/>
+
+			<Tab.Screen
+				name="ProfileTab"
+				component={ProfileStack}
+				options={{
+					tabBarIcon: ({ focused }) => (
+						<View style={{ zIndex: 5 }}>
+							<FontAwesome  name="user" size={30} color={focused ? "black" : "grey"} />
 						</View>
 					)
 				}}

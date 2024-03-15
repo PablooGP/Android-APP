@@ -61,7 +61,7 @@ const Searchbar = ({ setKeyword }) => {
 
 	return (
 		<View style={[Style.bar, Styles.shadow1]}>
-			<TextInput style={Style.input} placeholder="Busqueda de productos" onChangeText={onTextChanged} />
+			<TextInput style={Style.input} placeholder="Buscar productos" onChangeText={onTextChanged} />
 			<Pressable style={Style.pressable}>
 				<FontAwesome5 name="search" style={Style.vector} size={20} color="white"/>
 			</Pressable>
