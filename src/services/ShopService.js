@@ -5,6 +5,9 @@ export const shopApi = createApi({
 	reducerPath: "shopApi",
 	baseQuery: fetchBaseQuery({ baseUrl: base_url }),
 	endpoints: (builder) => ({
+		getProducts: builder.query({
+			query: (category) => `products.json`,
+		}),
 		getProductsByCategory: builder.query({
 			query: (category) => `products.json?orderBy="category"&equalTo="${category}"`,
 		}),
@@ -47,4 +50,4 @@ export const shopApi = createApi({
 	}),
 });
 
-export const { useGetProductsByCategoryQuery, useGetCategoriesQuery, usePostOrderMutation, useGetProfileImageQuery, usePostProfileImageMutation, useGetUserLocationQuery, usePostUserLocationMutation } = shopApi;
+export const { useGetProductsByCategoryQuery, useGetCategoriesQuery, usePostOrderMutation, useGetProfileImageQuery, usePostProfileImageMutation, useGetUserLocationQuery, usePostUserLocationMutation, useGetProductsQuery } = shopApi;

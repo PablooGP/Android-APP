@@ -6,16 +6,20 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { Styles, Set } from "./src/styles/index.js"
 import Topbar from "./src/components/Topbar.jsx"
-import Bottombar from "./src/components/Bottombar.js"
-
 import fonts from './src/global/fonts.js';
-
 import store from "./src/store/index.js"
+import { init } from "./src/db";
 
 // Import de Screens
 
-import TabNavigator from './src/Navigation/TabNavigator.jsx'
-import MainNavigator from './src/Navigation/MainNavigator.jsx';
+import MainNavigator from './src/navigation/MainNavigator.jsx';
+
+init().then(() => {
+	console.log("Database cargada")
+}).catch(err => {
+	console.log("La database no pudo cargar:")
+	console.log(err)
+})
 
 export default function App() {
 

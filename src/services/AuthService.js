@@ -9,7 +9,7 @@ export const authApi = createApi({
 			query: ({...auth}) => ({
 				url: `accounts:signUp?key=${api_key}`,
 				method: "POST",
-				body: "auth"
+				body: auth
 			})
 		}),
 		login: builder.mutation({

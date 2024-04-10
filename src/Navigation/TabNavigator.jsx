@@ -5,12 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { FontAwesome, Entypo, AntDesign, FontAwesome5, Fontisto } from "@expo/vector-icons";
 import { BlurView } from "expo-blur"
 
+import ItemListCategory from '../components/ItemListCategory.jsx';
+
 import ProductsStack from "./ProductsStack.jsx"
 import CategoryStack from "./CategoryStack.jsx"
 import CartStack from "./CartStack.jsx"
 import ProfileStack from "./ProfileStack.jsx"
 
 import Styles from '../styles/Styles.js'
+import StylesConfiguration from '../global/StylesConfiguration.js';
 
 const TabNavigator = () => {
 	const Tab = createBottomTabNavigator()
@@ -22,46 +25,33 @@ const TabNavigator = () => {
 				headerShown: false,
 				tabBarShowLabel: false,
 				tabBarStyle: Styles.tabBar,
-				tabBarBackground: () => (<BlurView intensity={30} experimentalBlurMethod='dimezisBlurView' style={{
-					...StyleSheet.absoluteFillObject,
-					borderTopRightRadius: 20,
-					borderTopLeftRadius: 20,
-					overflow: "hidden",
-					backgroundColor: "transparent"
-				}} />)
+
 
 			}}
 		>
 			<Tab.Screen
 				name="ProductsTab"
-				component={ProductsStack}
-				options={{
-					tabBarIcon: ({ focused }) => (
-						<View>
-							<FontAwesome name="home" size={30} color={focused ? "black" : "grey"} />
-						</View>
-					)
-				}}
-			/>
-			<Tab.Screen
-				name="CategoryTab"
 				component={CategoryStack}
 				options={{
 					tabBarIcon: ({ focused }) => (
-						<View>
-							<FontAwesome5 name="bars" size={30} color={focused ? "black" : "grey"} />
+						<View style={stylee.tabContainer}>
+							<FontAwesome name="home" size={30} color={focused ? StylesConfiguration.MainColor : "grey"} />
+							<Text style={[stylee.tabText, (focused ? stylee.tabActive : stylee.tabInactive)]}>{"Inicio"}</Text>
 						</View>
 					)
 				}}
 			/>
+
+
 
 			<Tab.Screen
 				name="CartTab"
 				component={CartStack}
 				options={{
 					tabBarIcon: ({ focused }) => (
-						<View style={{ zIndex: 5 }}>
-							<FontAwesome5 name="shopping-cart" size={30} color={focused ? "black" : "grey"} />
+						<View style={stylee.tabContainer}>
+							<FontAwesome5 name="shopping-cart" size={30} color={focused ? StylesConfiguration.MainColor : "grey"} />
+							<Text style={[stylee.tabText, (focused ? stylee.tabActive : stylee.tabInactive)]}>{"Carrito"}</Text>
 						</View>
 					)
 				}}
@@ -72,14 +62,50 @@ const TabNavigator = () => {
 				component={ProfileStack}
 				options={{
 					tabBarIcon: ({ focused }) => (
-						<View style={{ zIndex: 5 }}>
-							<FontAwesome  name="user" size={30} color={focused ? "black" : "grey"} />
+						<View style={stylee.tabContainer}>
+							<FontAwesome name="user" size={30} color={focused ? StylesConfiguration.MainColor : "grey"} />
+							<Text style={[stylee.tabText, (focused ? stylee.tabActive : stylee.tabInactive)]}>{"Cuenta"}</Text>
 						</View>
 					)
+				}}
+			/>
+
+			<Tab.Screen
+				name="ItemListCategory"
+				component={ItemListCategory}
+				options={{
+					tabBarItemStyle: {
+						display: "none"
+					}
 				}}
 			/>
 		</Tab.Navigator>
 	)
 }
 
+
+const stylee = StyleSheet.create({
+	tabContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		top: -4
+	},
+	tabText: {
+		position: "absolute",
+		fontSize: 11,
+		width: 100,
+		top: 32,
+		textAlign: "center",
+		textAlignVertical: "center",
+
+	},
+	tabActive: {
+		color: StylesConfiguration.MainColor,
+		fontWeight: "900"
+	},
+	tabInactive: {
+		color: "grey",
+
+	}
+})
 export default TabNavigator

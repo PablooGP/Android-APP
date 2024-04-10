@@ -13,7 +13,9 @@ const Styles = StyleSheet.create({
 
 	},
 	stackBackground: {
-		backgroundColor: BackgroundColor
+		backgroundColor: BackgroundColor,
+		width: "100%",
+		height: "100%",
 	},
 	tabBarSpace: {
 		width: "100%",

@@ -8,13 +8,9 @@ const Topbar = () => {
 		<View style={{
 			width: "100%",
 			height: StatusBar.currentHeight,
-			backgroundColor: 'rgba(0 0 0 / 0.25)'
+			backgroundColor: 'rgba(243 126 44 / 0.95)'
 		}}>
-			<BlurView intensity={30} experimentalBlurMethod='dimezisBlurView' style={{
-				...StyleSheet.absoluteFillObject,
-				overflow: "hidden",
-				backgroundColor: "transparent",
-			}} />
+			
 		</View>
 
 	)

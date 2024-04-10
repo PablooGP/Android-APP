@@ -34,7 +34,7 @@ const Style = StyleSheet.create({
 		top: 0,
 		zIndex: 1,
 		aspectRatio: 1/1,
-		backgroundColor: SecondaryColor,
+		backgroundColor: "transparent",
 		borderTopRightRadius: 20,
 		borderBottomRightRadius: 20,
 		alignItems: "center",
@@ -53,17 +53,17 @@ const Style = StyleSheet.create({
 	}
 })
 
-const Searchbar = ({ setKeyword }) => {
+const Searchbar = ({ setKeyword, style, placerholder }) => {
 
 	const onTextChanged = (text) => {
 		return setKeyword(text)
 	}
 
 	return (
-		<View style={[Style.bar, Styles.shadow1]}>
-			<TextInput style={Style.input} placeholder="Buscar productos" onChangeText={onTextChanged} />
+		<View style={[Style.bar, Styles.shadow1, style]}>
+			<TextInput style={Style.input} placeholder={placerholder || "Buscar productos"} onChangeText={onTextChanged} />
 			<Pressable style={Style.pressable}>
-				<FontAwesome5 name="search" style={Style.vector} size={20} color="white"/>
+				<FontAwesome name="search" style={Style.vector} size={17} color="#F37E2C"/>
 			</Pressable>
 		</View>
 	)
