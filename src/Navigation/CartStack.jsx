@@ -5,6 +5,12 @@ import ModalView from "../components/Modal.jsx";
 import ItemCounter from "../components/ItemCounter.jsx";
 import { HorizontalProductItemStyle } from "../styles/Styles.js"
 
+import { useSelector } from "react-redux";
+import { usePostOrderMutation } from "../services/shopService";
+
+import { ProductItemHorizontal } from "../components/ProductItem.jsx";
+import SpaceComponent from "../components/SpaceComponent.jsx";
+
 const CartArray = [
 	{
 		id: 1,
@@ -49,11 +55,16 @@ const CartContainer = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false)
 	const [itemSelected, setItemSelected] = useState({})
 
+	const cartItems = useSelector((state) => state.cartReducer.value.items);
+	const total = useSelector((state) => state.cartReducer.value.total);
+	const [triggerPost, result] = usePostOrderMutation()
+
 	const DeletePress = (properties) => {
 		setItemSelected(properties)
 		setModalVisible(true)
 	}
 
+	/*
 	const ProductView = ({ properties }) => {
 		return (
 			<View style={[HorizontalProductItemStyle.container]}>
@@ -67,17 +78,16 @@ const CartContainer = ({ navigation }) => {
 				</View>
 			</View>
 		)
-	}
-
-	
-
+	}*/
 	return (
 		<SafeAreaView>
 			{
-				cartArray.length > 0 ?
+				cartItems.length > 0 ?
 					(<FlatList
-						data={cartArray}
-						renderItem={({ item }) => <ProductView properties={item} />}
+						data={cartItems}
+						ListHeaderComponent={<SpaceComponent h={10}/>}
+						ListFooterComponent={<SpaceComponent h={10}/>}
+						renderItem={({ item }) => <ProductItemHorizontal properties={item} product={item} isCart={true}/>}
 						keyExtractor={item => item.id || item.name}
 					/>)
 					:

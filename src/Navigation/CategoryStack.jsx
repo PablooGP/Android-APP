@@ -13,6 +13,8 @@ import StylesConfiguration from '../global/StylesConfiguration'
 
 import { BackgroundColor } from '../styles/ColorDesign'
 
+import ProductView from '../components/ProductView'
+
 const Style = StyleSheet.create({
 
 })
@@ -44,10 +46,14 @@ const Category = ({ navigation, route }) => {
 	if (route.params && route.params.category) {
 		// Renderizar productos de cierta categoria
 		return (
-			<ItemListCategory/>
+			<ItemListCategory navigation={navigation}/>
 		)
 	} else if (route.params && route.params.item) {
 		// Renderizar el producto completo
+
+		return (
+			<ProductView item={route.params.item}/>
+		)
 	} else {
 		return (
 			<View style={styles.container}>

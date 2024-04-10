@@ -47,23 +47,21 @@ const Style = StyleSheet.create({
 	}
 })
 
-const ItemCounter = ({ position, quantity }) => {
-
-	const [counter, setCounter] = useState(quantity || 1)
+const ItemCounter = ({ position, buttonSize, fontSize, set, quantity }) => {
 
 	const counterUpdate = (n) => {
-		const Limit = Math.max(1, counter + n) // Para que no baje de 1
-		setCounter(Limit)
+		const Limit = Math.max(1, quantity + n) // Para que no baje de 1
+		set(Limit)
 	}
 
 	return (
 		<View style={[Style.container, position]}>
-			<TouchableOpacity style={Style.defaultButtonSize} onPress={() => counterUpdate(-1)}>
-				<Text style={[Style.text, Style.textMid]}>{"-"}</Text>
+			<TouchableOpacity style={buttonSize || Style.defaultButtonSize} onPress={() => counterUpdate(-1)}>
+				<Text style={[Style.text, Style.textMid, fontSize ? {fontSize: fontSize*1.4} : null]}>{"-"}</Text>
 			</TouchableOpacity>
-			<Text style={[Style.textInput, Style.textMid]}>{counter}</Text>
-			<TouchableOpacity style={Style.defaultButtonSize} onPress={() => counterUpdate(1)}>
-				<Text style={[Style.text, Style.textMid]}>{"+"}</Text>
+			<Text style={[Style.textInput, Style.textMid, fontSize ? {fontSize} : null]}>{quantity}</Text>
+			<TouchableOpacity style={buttonSize || Style.defaultButtonSize} onPress={() => counterUpdate(1)}>
+				<Text style={[Style.text, Style.textMid, fontSize ? {fontSize: fontSize*1.4} : null]}>{"+"}</Text>
 			</TouchableOpacity>
 		</View>
 	)
