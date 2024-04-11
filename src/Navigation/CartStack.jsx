@@ -26,6 +26,7 @@ const CartContainer = ({ navigation }) => {
 	}
 
 	const confirmCart = ()=> {
+		console.log("trigger post")
 		triggerPost({ total, cartItems, user: "loggedUser"})
 	}
 	
