@@ -47,11 +47,12 @@ const Style = StyleSheet.create({
 	}
 })
 
-const ItemCounter = ({ position, buttonSize, fontSize, set, quantity }) => {
+const ItemCounter = ({ position, buttonSize, fontSize, set, quantity, onPress }) => {
 
 	const counterUpdate = (n) => {
 		const Limit = Math.max(1, quantity + n) // Para que no baje de 1
 		set(Limit)
+		onPress(Limit)
 	}
 
 	return (

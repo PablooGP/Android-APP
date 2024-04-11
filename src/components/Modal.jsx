@@ -1,5 +1,8 @@
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native"
 
+import { useDispatch } from "react-redux";
+import { removeItem } from "../features/shop/cartSlice";
+
 const Styles = StyleSheet.create({
 	modal: {
 		position: "absolute",
@@ -40,7 +43,9 @@ const Styles = StyleSheet.create({
 	}
 })
 
-const ModalView = ({itemSelected, modalVisible, setModalVisible, setItemSelected, setCartArray, cartArray}) => {
+const ModalView = ({itemSelected, modalVisible, setModalVisible, setItemSelected}) => {
+
+	const dispatch = useDispatch()
 
 	const CancelFunction = () => {
 		setItemSelected({})
@@ -48,7 +53,7 @@ const ModalView = ({itemSelected, modalVisible, setModalVisible, setItemSelected
 	}
 
 	const DeleteItemFunction = () => {
-		setCartArray(cartArray.filter(e => e.id != itemSelected.id))
+		dispatch(removeItem(itemSelected))
 		setItemSelected({})
 		setModalVisible(false)
 	}

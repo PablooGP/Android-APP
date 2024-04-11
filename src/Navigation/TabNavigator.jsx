@@ -4,6 +4,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { FontAwesome, Entypo, AntDesign, FontAwesome5, Fontisto } from "@expo/vector-icons";
 import { BlurView } from "expo-blur"
+import { useDispatch, useSelector } from "react-redux";
 
 import ItemListCategory from '../components/ItemListCategory.jsx';
 
@@ -17,6 +18,10 @@ import StylesConfiguration from '../global/StylesConfiguration.js';
 
 const TabNavigator = () => {
 	const Tab = createBottomTabNavigator()
+
+	const dispatch = useDispatch()
+	const items = useSelector((state)=> state.cartReducer.value.items);
+	const quantity = items.reduce((a, b) => a + b.quantity, 0)
 
 	return (
 		<Tab.Navigator
@@ -50,6 +55,10 @@ const TabNavigator = () => {
 				options={{
 					tabBarIcon: ({ focused }) => (
 						<View style={stylee.tabContainer}>
+							<View style={[stylee.cartCounterHolder, {backgroundColor: focused ? StylesConfiguration.MainColor : "grey"}]}>
+								<Text style={[stylee.cartCounter, {color: "white"}]}>{quantity}</Text>
+							</View>
+							
 							<FontAwesome5 name="shopping-cart" size={30} color={focused ? StylesConfiguration.MainColor : "grey"} />
 							<Text style={[stylee.tabText, (focused ? stylee.tabActive : stylee.tabInactive)]}>{"Carrito"}</Text>
 						</View>
@@ -89,6 +98,26 @@ const stylee = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		top: -4
+	},
+	cartCounterHolder: {
+		position: "absolute",
+		left: 25,
+		top: -6,
+		zIndex: 2,
+		backgroundColor: "grey",
+		width: 18,
+		height: 18,
+		borderRadius: 20,
+	},
+	cartCounter: {
+		width: "100%",
+		height: "100%",
+		fontFamily: "SignikaNegative",
+		textAlign: "center",
+		textAlignVertical: "center",
+		
+		fontSize: 12,
+		fontWeight: "900",
 	},
 	tabText: {
 		position: "absolute",

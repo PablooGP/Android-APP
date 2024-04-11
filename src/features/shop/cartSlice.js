@@ -13,11 +13,11 @@ export const cartSlice = createSlice({
 	reducers: {
 		addItem: (state, action) => {
 			const productRepeated = state.value.items.find(
-				(item) => item.id === action.payload.id
+				(item) => item.name === action.payload.name
 			);
 			if (productRepeated) {
 				const itemsUpdated = state.value.items.map((item) => {
-					if (item.id === action.payload.id) {
+					if (item.name === action.payload.name) {
 						item.quantity += action.payload.quantity;
 						return item;
 					}
@@ -64,7 +64,7 @@ export const cartSlice = createSlice({
 			if (productIndex !== -1) {
 				state.value.items[productIndex].quantity = quantity;
 			}
-			
+
 			const total = state.value.items.reduce(
 				(acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
 				0
@@ -78,6 +78,6 @@ export const cartSlice = createSlice({
 	},
 });
 
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, updateItemQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;

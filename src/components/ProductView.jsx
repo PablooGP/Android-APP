@@ -15,7 +15,6 @@ const ProductView = ({ item }) => {
 
 	const onAddToCart = () => {
 		dispatch(addItem({...item, quantity: counter}))
-		console.log("add to cart", counter)
 	}
 
 	return (
