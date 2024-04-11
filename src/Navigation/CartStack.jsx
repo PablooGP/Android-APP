@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useDispatch } from "react-redux";
 
 import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image, Pressable, Modal } from "react-native";
 import ModalView from "../components/Modal.jsx";
@@ -10,6 +11,7 @@ import { usePostOrderMutation } from "../services/shopService";
 
 import { ProductItemHorizontal } from "../components/ProductItem.jsx";
 import SpaceComponent from "../components/SpaceComponent.jsx";
+import { clearCart } from "../features/shop/cartSlice.js";
 
 const CartContainer = ({ navigation }) => {
 
@@ -20,6 +22,8 @@ const CartContainer = ({ navigation }) => {
 	const total = useSelector((state) => state.cartReducer.value.total);
 	const [triggerPost, result] = usePostOrderMutation()
 
+	const dispatch = useDispatch()
+
 	const DeletePress = (properties) => {
 		setItemSelected(properties)
 		setModalVisible(true)
@@ -28,14 +32,15 @@ const CartContainer = ({ navigation }) => {
 	const confirmCart = ()=> {
 		console.log("trigger post")
 		triggerPost({ total, cartItems, user: "loggedUser"})
+		dispatch(clearCart())
 	}
 	
 	const CartFooter = () => {
 		return (
-			<View>
+			<View style={Styles.footerContainer}>
 				<SpaceComponent h={10} />
 				<TouchableOpacity style={Styles.buyButton} onPress={confirmCart}>
-					<Text>{"Comprar"}</Text>
+					<Text style={Styles.buttonText}>{"Finalizar compra"}</Text>
 				</TouchableOpacity>
 			</View>
 
@@ -68,8 +73,26 @@ const CartContainer = ({ navigation }) => {
 }
 
 const Styles = StyleSheet.create({
+	footerContainer: {
+		justifyContent: "center",
+		alignItems: "center",
+		width: "100%"
+	},
 	buyButton: {
+		width: 200,
+		height: 40,
+		borderRadius: 12,
 		backgroundColor: "#30c758"
+	},
+	buttonText: {
+		width: "100%",
+		height: "100%",
+		textAlign: "center",
+		textAlignVertical: "center",
+		fontSize: 18,
+		fontFamily: "SignikaNegative",
+		fontWeight: "900",
+		color: "white",
 	}
 })
 
