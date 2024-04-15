@@ -14,7 +14,7 @@ cd Android-APP
 npm install
 ```
 
-2. Iniciar proyecto
+3. Iniciar proyecto
 ```sh
 npm start
 ```
